@@ -1,0 +1,42 @@
+--- /Volumes/Macintosh_Data/cbell/Downloads/Marlin-Marlin_v1/Marlin/ultralcd.cpp	2014-02-03 12:33:10.000000000 -0500
++++ /Volumes/Macintosh_Data/cbell/Documents/Arduino/Marlin-Marlin_v1_auto_bed_v2/Marlin/ultralcd.cpp	2014-02-06 17:16:04.000000000 -0500
+@@ -176,9 +176,20 @@
+ // placeholders for Ki and Kd edits
+ float raw_Ki, raw_Kd;
+ 
++boolean welcomed = false;
++
+ /* Main status screen. It's up to the implementation specific part to show what is needed. As this is very display dependend */
+ static void lcd_status_screen()
+ {
++
++    // do a simple welcome screen.
++    if (!welcomed) {
++        START_MENU();
++        MENU_ITEM(gcode, "Welcome, Chuck!", PSTR("M119"));
++        delay(1000);
++        welcomed = true;
++        END_MENU();
++    }
+     if (lcd_status_update_delay)
+         lcd_status_update_delay--;
+     else
+@@ -255,6 +266,7 @@
+     autotempShutdown();
+ }
+ 
++
+ /* Menu implementation */
+ static void lcd_main_menu()
+ {
+@@ -437,6 +449,10 @@
+ #endif
+     MENU_ITEM(gcode, MSG_DISABLE_STEPPERS, PSTR("M84"));
+     MENU_ITEM(gcode, MSG_AUTO_HOME, PSTR("G28"));
++    MENU_ITEM(gcode, MSG_X_HOME, PSTR("G28 X0"));
++    MENU_ITEM(gcode, MSG_Y_HOME, PSTR("G28 Y0"));
++    MENU_ITEM(gcode, MSG_Z_HOME, PSTR("G28 Z0"));
++    MENU_ITEM(gcode, MSG_EJECT, PSTR("G0 Y180"));
+     //MENU_ITEM(gcode, MSG_SET_ORIGIN, PSTR("G92 X0 Y0 Z0"));
+     MENU_ITEM(function, MSG_PREHEAT_PLA, lcd_preheat_pla);
+     MENU_ITEM(function, MSG_PREHEAT_ABS, lcd_preheat_abs);

@@ -1,0 +1,15 @@
+--- /Volumes/Macintosh_Data/cbell/Downloads/Marlin-Marlin_v1/Marlin/language.h	2014-02-03 12:33:10.000000000 -0500
++++ /Volumes/Macintosh_Data/cbell/Documents/Arduino/Marlin-Marlin_v1_auto_bed_v2/Marlin/language.h	2014-02-05 16:59:09.000000000 -0500
+@@ -59,7 +59,11 @@
+ 	#define MSG_AUTOSTART "Autostart"
+ 	#define MSG_DISABLE_STEPPERS "Disable Steppers"
+ 	#define MSG_AUTO_HOME "Auto Home"
+-	#define MSG_SET_ORIGIN "Set Origin"
++        #define MSG_X_HOME "Home X Axis"
++        #define MSG_Y_HOME "Home Y Axis"
++        #define MSG_Z_HOME "Home Z Axis"
++        #define MSG_EJECT "Extend Bed"
++        #define MSG_SET_ORIGIN "Set Origin"
+ 	#define MSG_PREHEAT_PLA "Preheat PLA"
+ 	#define MSG_PREHEAT_PLA_SETTINGS "Preheat PLA Conf"
+ 	#define MSG_PREHEAT_ABS "Preheat ABS"
